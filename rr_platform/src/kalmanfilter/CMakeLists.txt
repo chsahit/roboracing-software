@@ -1,0 +1,3 @@
+add_executable(kalmanfilter kalmanfilter.cpp)
+target_link_libraries(kalmanfilter ${catkin_LIBRARIES})
+add_dependencies(kalmanfilter rr_platform_generate_messages_cpp)

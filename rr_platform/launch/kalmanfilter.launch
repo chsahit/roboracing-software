@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="rr_platform" type="kalmanfilter" name="kalmanfilter" output="screen" respawn="false">
+    <param name="state_topic" type="string" value="/state" />
+  </node>
+</launch>
