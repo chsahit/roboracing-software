@@ -161,7 +161,14 @@ int main(int argc, char **argv) {
             imuMsg.orientation.y = std::stod(tokens[7]);
             imuMsg.orientation.z = std::stod(tokens[8]);
             imuMsg.orientation.w = std::stod(tokens[9]);
-            imuMsg.linear_acceleration_covariance = unknown_covariance;
+            //Full-Scale Range * Nonlinearity = std_dev
+            //std_dev = 0.98, variance = 
+            //https://github.com/KristofRobot/razor_imu_9dof/blob/indigo-devel/nodes/imu_node.py
+            imuMsg.linear_acceleration_covariance = {
+                0.9604, 0, 0,
+                0, 0.9604, 0,
+                0, 0, 0.9604   
+            };
             imuMsg.angular_velocity_covariance = unknown_covariance;
             imuMsg.orientation_covariance = unknown_covariance;
             imu_pub.publish(imuMsg);
